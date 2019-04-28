@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PadelRevolution 2.0</title>
+
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <script type="text/javascript">
+		function hideError() {
+			document.getElementById( "dvError" ).style.display = "none";
+		}
+
+		function showError(msg) {
+			var dvError = document.getElementById( "dvError" );
+			var pError = document.createElement( "p" );
+
+			dvError.innerHTML = "";
+			dvError.appendChild( pError );
+			pError.appendChild( document.createTextNode( msg ) );
+			dvError.style.display = "block";
+		}
+
+		function chk() {
+			var toret = true;
+			var nombre = document.getElementById( "nombre" );
+			var apellidos = document.getElementById( "apellidos" );
+			var fechanacimiento = document.getElementById( "fecha" );
+			var telefono = document.getElementById( "telefono" );
+
+
+			hideError();
+
+			if ( nombre.value.trim().length == 0 ) {
+				showError( "El nombre es obligatorio" );
+				toret = false;
+			}
+			if ( apellidos.value.trim().length == 0 ) {
+				showError( "Los apellidos son obligatorios" );
+				toret = false;
+			}
+
+			if ( fechanacimiento.value.trim().length == 0 ) {
+				showError( "La fecha es obligatoria" );
+				toret = false;
+			}
+
+			if ( telefono.value.trim().length == 0 ) {
+				showError( "El telefono es obligatorio" );
+				toret = false;
+			}
+
+			return toret;
+		}
+	</script>
+
+</head>
+
+
+
+<body>
+
+<!--Cabecera-->
+<header>
+
+                <div id="head-left">
+                    <div id="divlogoprincipal">
+                        <a href="#"><img id="logoprincipal" src="res/sinmodificar.png" alt="Logo" title="Logo"/></a>
+                    </div>
+
+                </div>
+                <div id="head-center">
+                    <div id="divtitulo">
+                        <h1>PadelRevolution 2.0</h1>
+                    </div>
+                </div>
+
+                <div id="head-right">
+                    <div id="divlogin">
+                      <a href="{{access_link}}"><img src="res/salir.png" alt="Salir"title="Salir">{{user_name}}</a>
+                    </div>
+
+                </div>
+
+</header>
+<!--Menu-->
+<div id="divmenu">
+             <nav>
+ 				<ul class="nav">
+ 					<li><a href="/playerAdd">Añadir jugador</a></li>
+ 					<li><a href="/playerShowall">Ver jugadores</a>
+ 						<ul>
+ 							<li><a href="#">Añadir jugador</a></li>
+ 							<li><a href="#">Editar jugador</a></li>
+ 							<li><a href="#">Buscar jugador</a></li>
+ 						</ul>
+ 					</li>
+ 					<li><a href="#">Contacto</a></li>
+ 				</ul>
+ 			</nav>
+</div>
+<!--Cuerpo-->
+<div id="contenido">
+    <section id="useradd">
+      <div class="formulario">
+            <h1>Añadir Jugador</h1>
+
+            <form class="add" id="formadd" enctype="multipart/form-data" action="/playerAdd" method="POST" onsubmit="javascript: return chk();">
+
+                <div>
+				    <p>Nombre</p>
+                    <input id="nombre" type="text" name="nombre" size='50' maxlength="50" required placeholder="Introduce el nombre" >
+
+					<p>Apellidos</p>
+                    <input id="apellidos" type="text" name="apellidos" size='50' maxlength="50" required placeholder="Introduce los apellidos" >
+
+                    <p>Fecha de nacimiento</p>
+                    <input id="fecha" type="date" name="fecha" value="" required>
+
+                    <p>Foto</p>
+                    <input id="foto" type="text" name="foto" size='50' maxlength="50" placeholder="Introduce la direccion de la foto" >
+
+                    <p>Telefono</p>
+                    <input id="telefono" type="number" name="telefono" size='50' maxlength="50" required placeholder="Introduce el telefono" >
+
+                    <p>Equipo</p>
+                    <input id="equipo" type="text" name="equipo" size='50' maxlength="50" placeholder="Nombre de equipo" >
+
+				</div>
+
+                <div id="boton">
+                    <button value="ADD" id="insertar" name="action" onsubmit="javascript: document.formadd.submit()"><i class="fas fa-plus" ></i></button>
+                </div>
+
+            </form>
+        </div>
+   </section>
+
+</div>
+<!--Bloque de volver y posibles mensajes de error-->
+<div id="atras">
+	<a href="/main"><i class="fas fa-undo">Volver</i></a>
+</div>
+
+ <div id="respuesta" class="centrado">
+    {% if registro == "Jugador registrado correctamente" %}
+            Jugador registrado correctamente
+       {% endif %}
+        <div id="dvError">
+        </div>
+ </div>
+
+
+</body>
+
+<!--Footer-->
+    <footer class="footer">
+        <a name="contacto"></a>
+				<h3>
+           JMG || &copy; 2019 PadelRevolution2.0
+            </h3>
+    </footer>
+
+</html>
