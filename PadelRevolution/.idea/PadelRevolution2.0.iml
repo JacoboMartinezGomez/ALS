@@ -3,8 +3,8 @@
   <component name="FacetManager">
     <facet type="google-appengine-python" name="Google App Engine (Python)">
       <configuration>
-        <option name="rootFolder" value="C:\Users\Jacobo\Documents\GitKraken\ALS\PadelRevolution" />
-        <option name="sdkFolder" value="C:\Users\Jmgomez2\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine" />
+        <option name="rootFolder" value="C:\Users\Jacobo\Desktop\PadelRevolution" />
+        <option name="sdkFolder" value="$USER_HOME$/AppData/Local/Google/Cloud SDK/google-cloud-sdk/platform/google_appengine" />
         <option name="templatesFolder" value="" />
         <option name="oauth2" value="false" />
         <option name="deployConfigured" value="false" />
@@ -16,7 +16,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 2.7 (PadelRevolution)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 2.7 (PadelRevolution) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Google App Engine SDK" level="project" />
   </component>

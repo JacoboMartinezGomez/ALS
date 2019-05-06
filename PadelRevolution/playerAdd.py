@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -42,7 +42,7 @@ class PlayerAddHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         player = Player(usuario=user.nickname(), nombre=name, apellidos=surname, fechanacimiento=birthdate, foto=picture
                         , telefono=phonenumber, equipo=team)
-        print(player)
+
         player.put()
 
         user_name = user.nickname()
@@ -56,5 +56,3 @@ class PlayerAddHandler(webapp2.RequestHandler):
         }
         template=JINJA_ENVIRONMENT.get_template("playerAdd.html")
         self.response.write(template.render(template_values))
-
-

@@ -232,6 +232,9 @@ ul{
    top:0px;
 }
 
+#dvError{
+    color:red;
+}
 
 /**Pie**/
 .footer{
@@ -244,3 +247,21 @@ ul{
 	color:#D98F95;
 
 	}
+
+/**Pie**/
+.footerindex{
+	clear:both;
+	margin-top:27.75%;
+	background:#18233F;
+	width:100%;
+    height: 160px;
+	text-align:center;
+	color:#D98F95;
+
+	}
+
+/**URLS**/
+.url{
+    color: #D98F95;
+    
+}

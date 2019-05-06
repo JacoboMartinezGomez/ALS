@@ -46,7 +46,7 @@
 				toret = false;
 			}
 
-			if ( telefono.value.trim().length == 0 ) {
+			if ( telefono.value.trim().length <= 8  ) {
 				showError( "Telefono incorrecto" );
 				toret = false;
 			}
@@ -82,7 +82,7 @@
 
                 <div id="head-right">
                     <div id="divlogin">
-                      <a href="{{access_link}}"class="url"><img src="res/salir_encolor.png" alt="Salir" title="Salir">{{user_name}}</a>
+                      <a href="{{access_link}}" class="url"><img src="res/salir_encolor.png" alt="Salir"title="Salir">{{user_name}}</a>
                     </div>
 
                 </div>
@@ -100,35 +100,36 @@
 </div>
 <!--Cuerpo-->
 <div id="contenido">
-    <section id="useradd">
+    <section id="userdelete">
       <div class="formulario">
-            <h1>Añadir Jugador</h1>
+            <h1>Borrar Jugador</h1>
 
-            <form class="add" id="formadd" enctype="multipart/form-data" action="/playerAdd" method="POST" onsubmit="javascript: return chk();">
+            <form class="edit" id="formdelete" enctype="multipart/form-data" action="/playerDelete" method="POST" onsubmit="javascript: return chk();">
 
                 <div>
+                    <input  id="id" type="hidden"  name="id" value="{{player.key.urlsafe()}}" >
 				    <p>Nombre</p>
-                    <input id="nombre" type="text" name="nombre" size='50' maxlength="50" required placeholder="Introduce el nombre" >
+                    <input id="nombre" type="text" name="nombre" size='50' maxlength="50" required value="{{player.nombre}}" readonly >
 
 					<p>Apellidos</p>
-                    <input id="apellidos" type="text" name="apellidos" size='50' maxlength="50" required placeholder="Introduce los apellidos" >
+                    <input id="apellidos" type="text" name="apellidos" size='50' maxlength="50" required value="{{player.apellidos}}" readonly >
 
                     <p>Fecha de nacimiento</p>
-                    <input id="fecha" type="date" name="fecha" value="" required>
+                    <input id="fecha" type="date" name="fecha" value="{{player.fechanacimiento}}" readonly>
 
                     <p>Foto</p>
-                    <input id="foto" type="text" name="foto" size='50' maxlength="50" placeholder="Introduce la direccion de la foto" >
+                    <input id="foto" type="text" name="foto" size='50' maxlength="50" value="{{player.foto}}" readonly>
 
                     <p>Telefono</p>
-                    <input id="telefono" type="number" name="telefono" size='9' maxlength="9" required placeholder="Introduce el telefono" >
+                    <input id="telefono" type="number" name="telefono" size='9' maxlength="9" required value="{{player.telefono}}" readonly>
 
                     <p>Equipo</p>
-                    <input id="equipo" type="text" name="equipo" size='50' maxlength="50" placeholder="Nombre de equipo" >
+                    <input id="equipo" type="text" name="equipo" size='50' maxlength="50" value="{{player.equipo}}" readonly>
 
 				</div>
 
                 <div id="boton">
-                    <button value="ADD" id="insertar" alt ="insertar" name="action" onsubmit="javascript: document.formadd.submit()"><i class="fas fa-plus" ></i></button>
+                    <button value="DELETE" id="delete" alt="Eliminar" name="action" onsubmit="javascript: document.formdelete.submit()"><i class="fas fa-trash" ></i></button>
                 </div>
 
             </form>
@@ -142,8 +143,8 @@
 </div>
 
  <div id="respuesta" class="centrado">
-    {% if registro == "Jugador registrado correctamente" %}
-            Jugador registrado correctamente
+    {% if registro == "Jugador editado correctamente" %}
+            Jugador editado correctamente
        {% endif %}
         <div id="dvError">
         </div>

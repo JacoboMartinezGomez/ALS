@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from google.appengine.api import users
 import webapp2
 import jinja2

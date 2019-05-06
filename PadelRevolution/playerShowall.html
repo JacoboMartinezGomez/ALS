@@ -54,13 +54,8 @@
 			return toret;
 		}
 	</script>
-
 </head>
-
-
-
 <body>
-
 <!--Cabecera-->
 <header>
 
@@ -68,98 +63,84 @@
                     <div id="divlogoprincipal">
                         <a href="#"><img id="logoprincipal" src="res/sinmodificar.png" alt="Logo" title="Logo"/></a>
                     </div>
-
                 </div>
                 <div id="head-center">
                     <div id="divtitulo">
                         <h1>PadelRevolution 2.0</h1>
                     </div>
                 </div>
-
                 <div id="head-right">
                     <div id="divlogin">
-                      <a href="{{access_link}}"><img src="res/salir.png" alt="Salir"title="Salir">{{user_name}}</a>
+                      <a href="{{access_link}}" class="url"><img src="res/salir_encolor.png" alt="Salir"title="Salir">{{user_name}}</a>
                     </div>
-
                 </div>
-
 </header>
 <!--Menu-->
 <div id="divmenu">
              <nav>
  				<ul class="nav">
- 					<li><a href="/playerAdd">Añadir jugador</a></li>
- 					<li><a href="/playerShowall">Ver jugadores</a>
- 						<ul>
- 							<li><a href="#">Añadir jugador</a></li>
- 							<li><a href="#">Editar jugador</a></li>
- 							<li><a href="#">Buscar jugador</a></li>
- 						</ul>
- 					</li>
- 					<li><a href="#">Contacto</a></li>
+ 					<li><a href="/playerAdd">Añadir Jugador</a></li>
+ 					<li><a href="/playerShowall">Ver Jugadores</a></li>
+ 					<li><a href="/showFavs">Ver Favoritos</a></li>
  				</ul>
  			</nav>
 </div>
 <!--Cuerpo-->
 <div id="contenido">
     <section id="usershowall">
-        <h1>Usuarios registrados</h1>
-
+        <center><h1>Usuarios registrados</h1></center>
          <table class="showall-tab">
                     <tr>
                        	<th>Nombre</th>
                         <th>Apellidos</th>
-						<th>Fecha de nacimiento</th>
+                        <th>Fecha de nacimiento</th>
                         <th>Telefono</th>
-
-						<th>Equipo</th>
+                        <th>Equipo</th>
+                        <th>Acciones</th>
                     </tr>
-
-
                     {% for Player in players: %}
-
                     <tr>
 						<td>{{Player.nombre}}</td>
 						<td>{{Player.apellidos}}</td>
 						<td>{{Player.fechanacimiento}}</td>
                         <td>{{Player.telefono}}</td>
-
 						<td>{{Player.equipo}}</td>
 
-						<td>
-                            <a href="/edit?id={{Player.key.urlsafe()}}"><i class="fas fa-pencil-alt"></i></a>&nbsp
-						    <a href="/delete?id={{Player.key.urlsafe()}}"><i class="fas fa-trash-alt"></i></a>
-						    <a href="/showcurrent?id={{Player.key.urlsafe()}}"><i class="fas fa-eye"></i></a>
+						<td>&nbsp
+                            <a href="/playerEdit?id={{Player.key.urlsafe()}}"><i class="fas fa-pencil-alt" alt="editar" title="editar"></i></a>&nbsp
+						    <a href="/playerDelete?id={{Player.key.urlsafe()}}"><i class="fas fa-trash-alt" alt="eliminar" title="eliminar"></i></a>&nbsp
+						    <a href="/addFavs?id={{Player.key.urlsafe()}}"><i class="fas fa-star" alt="favorito" title="favorito"></i></a>
                         </td>
                     </tr>
-
-
                    {% endfor %}
-
-
          </table>
-
-
-
-
-
-
-
-
    </section>
-
 </div>
-
 <!--Bloque de volver y posibles mensajes de error-->
 <div id="atras">
-	<a href="/main"><i class="fas fa-undo">Volver</i></a>
+	<a href="/main" class="url"><i class="fas fa-undo" class="url">Volver</i></a>
 </div>
+ <div id="respuesta" class="centrado">
+    {% if registro == "Jugador editado correctamente" %}
+            Jugador editado correctamente
+       {% endif %}
 
+     {% if registro == "Jugador eliminado correctamente" %}
+            Jugador eliminado correctamente
+       {% endif %}
 
+     {% if favorito == "Jugador agregado a favoritos" %}
+            Jugador añadido a favoritos
+       {% endif %}
 
+     {% if favorito == "El jugador ya esta en favoritos" %}
+           El jugador ya esta en favoritos
+       {% endif %}
 
+        <div id="dvError">
+        </div>
+ </div>
 </body>
-
 <!--Footer-->
     <footer class="footer">
         <a name="contacto"></a>
@@ -167,5 +148,4 @@
            JMG || &copy; 2019 PadelRevolution2.0
             </h3>
     </footer>
-
 </html>
